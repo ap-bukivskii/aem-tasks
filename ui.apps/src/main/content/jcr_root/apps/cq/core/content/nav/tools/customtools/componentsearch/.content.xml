@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:description="Component Search Tool to search for components based on the determined parameters"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Component Search Tool"
+          href="/apps/srch/components/searchtool.html"
+          id="custom-search-tool"
+          target="_blank"/>

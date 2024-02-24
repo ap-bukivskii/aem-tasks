@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          jcr:primaryType="cq:Page">
+    <jcr:content
+            jcr:primaryType="nt:unstructured"
+            jcr:title="Component Search Tool"
+            sling:resourceType="granite/ui/components/shell/page"
+            consoleId="componentsearch">
+        <head jcr:primaryType="nt:unstructured">
+            <clientlibs
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
+                    categories="[granite.ui.coral.foundation,srch.base]"/>
+        </head>
+        <title
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Component Search Tool"
+                sling:resourceType="granite/ui/components/shell/title"/>
+        <content
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/foundation/container">
+            <items jcr:primaryType="nt:unstructured">
+                <columns
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/foundation/container">
+                    <layout
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="granite/ui/components/foundation/layouts/fixedcolumns"/>
+                    <items jcr:primaryType="nt:unstructured">
+                        <col1
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="search"
+                                sling:resourceType="granite/ui/components/foundation/section"
+                                maximized="{Boolean}true">
+                            <items jcr:primaryType="nt:unstructured">
+                                <heading
+                                        granite:class="coral-Heading coral-Heading--2"
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                        level="{Long}2"
+                                        text="Search for a component"/>
+                                <well
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/well"
+                                        margin="{Boolean}true">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <container
+                                                granite:id="searchForm"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form"
+                                                enctype="multipart/form-data"
+                                                foundationForm="{Boolean}true"
+                                                loadingMask="{Boolean}true"
+                                                margin="{Boolean}true"
+                                                maximized="{Boolean}true"
+                                                style="vertical">
+                                            <items jcr:primaryType="nt:unstructured">
+
+                                                <propNameField
+                                                        granite:id="propName"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Name of property to search the component"
+                                                        emptyText="Enter property name, e.g. jcr:title"
+                                                        required="{Boolean}true"/>
+                                                <propValueField
+                                                        granite:id="propVal"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                        fieldLabel="Value of property to search the component"
+                                                        emptyText="Enter property value, e.g. English"
+                                                        required="{Boolean}true"/>
+                                                <pathField
+                                                        granite:id="searchPath"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                        emptyText="Enter a path, e.g. /content/weretail/en"
+                                                        fieldLabel="Choose path to search the component"
+                                                        filter="folder,hierarchy"
+                                                        required="{Boolean}true"
+                                                        rootPath="/content"/>
+                                                <submitButton
+                                                        granite:id="btnSubmit"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/button"
+                                                        text="Search"
+                                                        type="submit"/>
+                                                <downloadCsvButton
+                                                        granite:id="downloadCsv"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/button"
+                                                        text="Download as CSV"/>
+                                                <resultMessage
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/form/field"
+                                                        fieldLabel="Results:"
+                                                        wrapperClass="result"/>
+                                            </items>
+                                        </container>
+                                    </items>
+                                </well>
+                            </items>
+                        </col1>
+                        <col2
+                                jcr:primaryType="nt:unstructured"
+                                jcr:title="infodesk"
+                                sling:resourceType="granite/ui/components/foundation/section"
+                                maximized="{Boolean}true">
+                            <items jcr:primaryType="nt:unstructured">
+                                <row1
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="row2"
+                                        sling:resourceType="granite/ui/components/foundation/section"
+                                        maximized="{Boolean}true">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <heading
+                                                granite:class="coral-Heading coral-Heading--2"
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                level="{Long}2"
+                                                text="Info Desk"/>
+                                        <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well"
+                                                margin="{Boolean}true">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <heading
+                                                        granite:class="coral-Heading coral-Heading--2"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="{Long}2"
+                                                        text="Most commonly used Properties"/>
+                                                <accordion
+                                                        granite:id="infoDeskPropertiesAccordion"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/accordion">
+                                                </accordion>
+                                            </items>
+                                        </well>
+                                    </items>
+                                </row1>
+                                <row2
+                                        jcr:primaryType="nt:unstructured"
+                                        jcr:title="row2"
+                                        sling:resourceType="granite/ui/components/foundation/section"
+                                        maximized="{Boolean}true">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <well
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/well"
+                                                margin="{Boolean}true">
+                                            <items jcr:primaryType="nt:unstructured">
+                                                <heading
+                                                        granite:class="coral-Heading coral-Heading--2"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/heading"
+                                                        level="{Long}2"
+                                                        text="Components by Group"/>
+                                                <accordion
+                                                        granite:id="infoDeskComponentsAccordion"
+                                                        jcr:primaryType="nt:unstructured"
+                                                        sling:resourceType="granite/ui/components/coral/foundation/accordion">
+                                                </accordion>
+                                            </items>
+                                        </well>
+                                    </items>
+                                </row2>
+                            </items>
+                        </col2>
+                    </items>
+                </columns>
+            </items>
+        </content>
+    </jcr:content>
+</jcr:root>

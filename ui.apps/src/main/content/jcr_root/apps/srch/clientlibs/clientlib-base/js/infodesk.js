@@ -15,7 +15,7 @@ $(document).ready(function() {
 
                 var contentHTML = '<ul>';
                 group.components.forEach(component => {
-                    contentHTML += `<li>${component.name}: ${component.description} (Resource: ${component.resourceType})</li>`;
+                    contentHTML += `<li><b>${component.name}: </b> ${component.description} <br>(Resource: ${component.resourceType})</li>`;
                 });
                 contentHTML += '</ul>';
 
@@ -39,7 +39,7 @@ $(document).ready(function() {
 
             var contentHTML = '<ul>';
             props.forEach(prop => {
-                contentHTML += `<li>${prop}</li>`;
+                contentHTML += `<li><b>${prop.propertyName}</b>: ${prop.description}</li>`;
             });
             contentHTML += '</ul>';
 

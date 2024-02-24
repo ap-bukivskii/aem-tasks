@@ -1,6 +1,5 @@
 package com.tasks.aem.srch.core.servlets;
 
-import org.apache.jackrabbit.util.Text;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.servlets.ServletResolverConstants;
@@ -20,7 +19,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.util.Objects;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component(
         service = { Servlet.class },
@@ -37,23 +37,16 @@ public class SearchSubmit extends SlingAllMethodsServlet {
         String rootPath = request.getParameter("searchPath");
         String propertyName = request.getParameter("propName");
         String propertyValue = request.getParameter("propVal");
-        String escapedPropertyName = Text.escapeIllegalJcrChars(propertyName);
-        String escapedRootPath = Text.escapeIllegalJcrChars(rootPath);
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
         JSONArray resultsArray = new JSONArray();
+        Set<String> resultsSet = new HashSet<>();
 
         try {
             Session session = request.getResourceResolver().adaptTo(Session.class);
             QueryManager queryManager = session.getWorkspace().getQueryManager();
-
-//            String queryString = "SELECT parent.* FROM [nt:unstructured] AS s " +
-//                    "INNER JOIN [cq:PageContent] AS pageContent ON ISCHILDNODE(s, pageContent) " +
-//                    "INNER JOIN [cq:Page] AS parent ON ISCHILDNODE(pageContent, parent) " +
-//                    "WHERE ISDESCENDANTNODE(parent, '" + rootPath + "') " +
-//                    "AND s.[" + propertyName + "] LIKE '" + propertyValue + "'";
 
             String queryString = "SELECT * FROM [nt:unstructured] AS s WHERE ISDESCENDANTNODE(s, '" + rootPath + "') AND s.[" + propertyName + "] LIKE '" + propertyValue + "'";
 
@@ -83,9 +76,13 @@ public class SearchSubmit extends SlingAllMethodsServlet {
                     componentType = String.valueOf(componentNode.getProperty("sling:resourceType").getString());
                 }
 
-                resultObject.put("pagePath", pagePath);
-                resultObject.put("componentType", componentType);
-                resultsArray.put(resultObject);
+                String unique = pagePath + '|' + componentType;
+                if (!resultsSet.contains(unique)) {
+                    resultsSet.add(unique);
+                    resultObject.put("pagePath", pagePath);
+                    resultObject.put("componentType", componentType);
+                    resultsArray.put(resultObject);
+                }
             }
 
             response.getWriter().write(resultsArray.toString());

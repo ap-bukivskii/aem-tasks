@@ -44,7 +44,7 @@ public class ComponentsDataSourceServlet extends SlingAllMethodsServlet {
         try {
             Session session = request.getResourceResolver().adaptTo(Session.class);
             QueryManager queryManager = session.getWorkspace().getQueryManager();
-            String queryString = "SELECT * FROM [cq:Component] AS s WHERE ISDESCENDANTNODE(s, '/apps')";
+            String queryString = "SELECT * FROM [cq:Component] AS s WHERE ISDESCENDANTNODE(s, '/apps/srch') OR ISDESCENDANTNODE(s, '/apps/weretail') OR ISDESCENDANTNODE(s, '/apps/wknd')";
             Query query = queryManager.createQuery(queryString, Query.JCR_SQL2);
 
             QueryResult result = query.execute();

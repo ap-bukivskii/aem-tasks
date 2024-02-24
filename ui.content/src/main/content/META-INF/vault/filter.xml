@@ -3,5 +3,6 @@
     <filter root="/conf/srch" mode="merge"/>
     <filter root="/content/srch" mode="merge"/>
     <filter root="/content/dam/srch/asset.jpg" mode="merge"/>
+    <filter root="/content/dam/srch/commonProperties.csv" mode="merge"/>
     <filter root="/content/experience-fragments/srch" mode="merge"/>
 </workspaceFilter>

@@ -1,0 +1,24 @@
+{
+  "componentProperties": [
+    "jcr:primaryType=Defines the primary node type of the node, determining its structure and available properties",
+    "jcr:created=Records the date and time when the node was created",
+    "jcr:createdBy=Indicates the user who created the node",
+    "jcr:lastModified=Records the date and time when the node was last modified",
+    "jcr:lastModifiedBy=Indicates the user who last modified the node",
+    "jcr:mixinTypes=Lists the mixin types applied to the node, adding additional characteristics without changing its primary type",
+    "cq:lastReplicated=Records the date and time when the node was last replicated",
+    "cq:lastReplicatedBy=Indicates the user who last replicated the node",
+    "cq:lastReplicationAction=Describes the last replication action performed on the node (e.g., Activate, Deactivate)",
+    "sling:resourceType=Defines the sling resource type for the node, affecting how it's rendered and processed",
+    "sling:resourceSuperType=Specifies the parent resource type, inheriting its properties and functionalities",
+    "cq:template=Defines the template used for the page, determining its structure and components",
+    "cq:designPath=Points to the design used by the page, affecting its appearance and styling",
+    "cq:tags=Associates the node with one or more tags for categorization and search",
+    "cq:dialogPath=Specifies the path to the dialog used for editing the node’s properties in the AEM authoring interface",
+    "jcr:description=Provides a description of the node for informational purposes",
+    "jcr:title=Specifies the title of the node, used for display in administrative interfaces and possibly on the rendered page",
+    "jcr:language=Defines the language of the node, used for localization and internationalization",
+    "jcr:data=Stores binary data associated with the node, such as the content of a file",
+    "sling:vanityPath=Defines a vanity URL for the node, allowing it to be accessed via a more readable or branded URL"
+  ]
+}

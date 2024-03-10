@@ -4,30 +4,30 @@ $(document).ready(function() {
             return;
         }
         $.ajax({
-            url: '/apps/customtools/convertJsonToCsv',
+            url: '/bin/customtools/convertJsonToCsv',
             type: 'POST',
             data: JSON.stringify(window.searchResponseData),
             contentType: 'application/json',
             success: function(response, status, xhr) {
-                var filename = "";
-                var disposition = xhr.getResponseHeader('Content-Disposition');
+                let filename = "";
+                let disposition = xhr.getResponseHeader('Content-Disposition');
                 if (disposition && disposition.indexOf('attachment') !== -1) {
-                    var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
-                    var matches = filenameRegex.exec(disposition);
+                    let filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+                    let matches = filenameRegex.exec(disposition);
                     if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
                 }
 
-                var type = xhr.getResponseHeader('Content-Type');
-                var blob = new Blob([response], { type: type });
+                let type = xhr.getResponseHeader('Content-Type');
+                let blob = new Blob([response], { type: type });
 
                 if (typeof window.navigator.msSaveBlob !== 'undefined') {
                     window.navigator.msSaveBlob(blob, filename);
                 } else {
-                    var URL = window.URL || window.webkitURL;
-                    var downloadUrl = URL.createObjectURL(blob);
+                    let URL = window.URL || window.webkitURL;
+                    let downloadUrl = URL.createObjectURL(blob);
 
                     if (filename) {
-                        var a = document.createElement("a");
+                        let a = document.createElement("a");
                         if (typeof a.download === 'undefined') {
                             window.location = downloadUrl;
                         } else {

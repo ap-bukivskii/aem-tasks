@@ -4,15 +4,15 @@ $(document).ready(function () {
         return /* html */`
             <div>
                 <span>   
-                    ${element.componentType} on page:
+                    <b>${element.componentType}</b> on page:
                 </span>
-                <a href="${element.pagePath}.html">${element.pagePath}</a>
+                <a href="/editor.html${element.pagePath}.html">${element.pagePath}</a>
             </div>
         `;
     }
     function onSearchSuccess(data) {
         $('.results-wrapper').remove();
-        var $result = $(".result").append('<div class="results-wrapper"></div>');
+        let $result = $(".result").append('<div class="results-wrapper"></div>');
         window.searchResponseData = data;
 
         data.forEach(element => {
@@ -34,7 +34,7 @@ $(document).ready(function () {
             $.ajax({
                 type: "GET",
                 enctype: 'multipart/form-data',
-                url: `/apps/customtools/search?searchPath=${$("#searchPath").val()}&propName=${$("#propName").val()}&propVal=${$("#propVal").val()}`,
+                url: `/bin/customtools/search?searchPath=${$("#searchPath").val()}&propName=${$("#propName").val()}&propVal=${$("#propVal").val()}`,
                 processData: false,
                 contentType: false,
                 cache: false,

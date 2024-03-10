@@ -1,43 +1,43 @@
 $(document).ready(function() {
-    var $componentsAccordion = $('#infoDeskComponentsAccordion').empty(); // Clear previous entries
-    var $propsAccordion = $('#infoDeskPropertiesAccordion').empty(); // Clear previous entries
+    const $componentsAccordion = $('#infoDeskComponentsAccordion').empty(); // Clear previous entries
+    const $propsAccordion = $('#infoDeskPropertiesAccordion').empty(); // Clear previous entries
 
+//    $.ajax({
+//        url: '/bin/datasource/components.json',
+//        method: 'GET',
+//        dataType: 'json',
+//        success: function(groups) {
+//            groups.forEach(group => {
+//                let $item = new Coral.Accordion.Item().set({
+//                    label: { innerHTML: group.groupName },
+//                    content: { innerHTML: '' }
+//                });
+//
+//                let contentHTML = '<ul>';
+//                group.components.forEach(component => {
+//                    contentHTML += `<li><b>${component.name}: </b> ${component.description} <br>(Resource: ${component.resourceType})</li>`;
+//                });
+//                contentHTML += '</ul>';
+//
+//                $item.content.innerHTML = contentHTML;
+//                $componentsAccordion[0].appendChild($item);
+//            });
+//        },
+//        error: function() {
+//            console.log('Error fetching component data');
+//        }
+//    });
     $.ajax({
-        url: '/apps/datasource/components.json', 
-        method: 'GET',
-        dataType: 'json',
-        success: function(groups) {
-            groups.forEach(group => {
-                var $item = new Coral.Accordion.Item().set({
-                    label: { innerHTML: group.groupName },
-                    content: { innerHTML: '' } 
-                });
-
-                var contentHTML = '<ul>';
-                group.components.forEach(component => {
-                    contentHTML += `<li><b>${component.name}: </b> ${component.description} <br>(Resource: ${component.resourceType})</li>`;
-                });
-                contentHTML += '</ul>';
-
-                $item.content.innerHTML = contentHTML;
-                $componentsAccordion[0].appendChild($item);
-            });
-        },
-        error: function() {
-            console.log('Error fetching component data');
-        }
-    });
-    $.ajax({
-        url: '/apps/customtools/commonproperties',
+        url: '/bin/customtools/commonproperties/v2',
         dataType: 'json',
         method: 'GET',
         success: function(props) {
-            var $item = new Coral.Accordion.Item().set({
+            let $item = new Coral.Accordion.Item().set({
                 label: { innerHTML: 'Properties' },
                 content: { innerHTML: '' } 
             });
 
-            var contentHTML = '<ul>';
+            let contentHTML = '<ul>';
             props.forEach(prop => {
                 contentHTML += `<li><b>${prop.propertyName}</b>: ${prop.description}</li>`;
             });

@@ -1,0 +1,18 @@
+<sly data-sly-use.componentsModel="com.tasks.aem.srch.core.models.ComponentsModel"></sly>
+<sly data-sly-test="${!componentsModel.groups}">
+  <p>Sorry, something went wrong while fetching components.</p>
+</sly>
+<coral-accordion>
+  <sly data-sly-list.group="${componentsModel.groups}">
+    <coral-accordion-item>
+      <coral-accordion-item-label>${group.name}</coral-accordion-item-label>
+      <coral-accordion-item-content>
+        <ul>
+          <sly data-sly-list.component="${group.components}">
+            <li><b>${component.name}: </b> ${component.description} <br>(Resource: ${component.resourceType})</li>
+          </sly>
+        </ul>
+      </coral-accordion-item-content>
+    </coral-accordion-item>
+  </sly>
+</coral-accordion>

@@ -14,7 +14,7 @@
             <clientlibs
                     jcr:primaryType="nt:unstructured"
                     sling:resourceType="granite/ui/components/coral/foundation/includeclientlibs"
-                    categories="[granite.ui.coral.foundation,srch.base]"/>
+                    categories="[granite.ui.coral.foundation,srch.customtools]"/>
         </head>
         <title
                 jcr:primaryType="nt:unstructured"
@@ -163,7 +163,7 @@
                                                 <accordion
                                                         granite:id="infoDeskComponentsAccordion"
                                                         jcr:primaryType="nt:unstructured"
-                                                        sling:resourceType="granite/ui/components/coral/foundation/accordion">
+                                                        sling:resourceType="srch/components/componentsaccordion">
                                                 </accordion>
                                             </items>
                                         </well>
